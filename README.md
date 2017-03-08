@@ -1,6 +1,6 @@
 ## Welcome to GitHub Pages
 
-![](http://www.baidu.com/img/bdlogo.gif)
+![](https://github.com/ZHK1024/Kagura/Resource/images/monster.png)
 
 You can use the [editor on GitHub](https://github.com/ZHK1024/zhk2014.github.com/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
