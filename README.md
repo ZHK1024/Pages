@@ -1,5 +1,5 @@
 ## Welcome to GitHub Pages
-<img align="center" src="https://github.com/ZHK1024/Kagura/blob/master/Resource/images/icon_60@3x.png" />
+<img align="center" src="https://github.com/ZHK1024/Kagura/blob/master/Resource/images/icon_60@3x.png?raw=true" />
 ![](https://github.com/ZHK1024/Kagura/blob/master/Resource/images/clue.png)
 
 You can use the [editor on GitHub](https://github.com/ZHK1024/zhk2014.github.com/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
