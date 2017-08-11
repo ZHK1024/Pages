@@ -1,0 +1,15 @@
+{
+    "applinks":{
+        "apps": [],
+        "details": [
+                        {
+                        "appID": "com.jicai.dai66",
+                        "paths": [*]
+                        },
+                        {
+                        "appID": "",
+                        "paths": [*]
+                        }
+                   ]
+    }
+}
