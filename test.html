@@ -100,6 +100,17 @@
             }
         });
         
+        // 返回数据函数
+        function returnData() {
+            const data = '返回的数据';
+            if (typeof completion === 'function') {
+                completion(data);
+            } else {
+                console.log('completion 函数未定义，返回数据:', data);
+                alert('返回数据: ' + data);
+            }
+        }
+        
         async function closeWindow() {
             try {
                 // 复制 "hello world" 到剪贴板
