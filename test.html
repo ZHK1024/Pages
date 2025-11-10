@@ -105,6 +105,7 @@
             const data = '返回的数据';
             if (typeof completion === 'function') {
                 completion(data);
+                alert('调用成功');
             } else {
                 console.log('completion 函数未定义，返回数据:', data);
                 alert('返回数据: ' + data);
