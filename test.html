@@ -94,7 +94,7 @@
         window.addEventListener('beforeunload', async (event) => {
             const closeTime = formatDateTime(new Date());
             try {
-                await navigator.clipboard.writeText(closeTime);
+                await navigator.clipboard.writeText('关闭时间: ' + closeTime);
             } catch (err) {
                 console.error('写入关闭时间失败:', err);
             }
