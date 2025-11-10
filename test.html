@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关闭页面</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        
+        .close-btn {
+            padding: 15px 30px;
+            font-size: 16px;
+            color: white;
+            background-color: #e74c3c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .close-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .close-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background-color: #2ecc71;
+            color: white;
+            border-radius: 5px;
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="message" id="message">已复制到剪贴板！</div>
+    <button class="close-btn" onclick="closeWindow()">关闭页面</button>
+    
+    <script>
+        async function closeWindow() {
+            try {
+                // 复制 "hello world" 到剪贴板
+                await navigator.clipboard.writeText('hello world');
+                
+                // 显示提示消息
+                const message = document.getElementById('message');
+                message.style.display = 'block';
+                
+                // 延迟一下再关闭页面，让用户看到提示
+                setTimeout(() => {
+                    // 尝试关闭窗口
+                    window.close();
+                    
+                    // 如果 window.close() 不起作用（某些浏览器限制），显示提示
+                    setTimeout(() => {
+                        message.textContent = '请手动关闭此标签页';
+                        message.style.backgroundColor = '#f39c12';
+                    }, 100);
+                }, 500);
+            } catch (err) {
+                console.error('复制失败:', err);
+                const message = document.getElementById('message');
+                message.textContent = '复制失败，请检查浏览器权限';
+                message.style.backgroundColor = '#e74c3c';
+                message.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
