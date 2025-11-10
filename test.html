@@ -15,23 +15,40 @@
             background-color: #f0f0f0;
         }
         
-        .close-btn {
+        .btn {
             padding: 15px 30px;
             font-size: 16px;
             color: white;
-            background-color: #e74c3c;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            margin: 10px;
+        }
+        
+        .close-btn {
+            background-color: #e74c3c;
         }
         
         .close-btn:hover {
             background-color: #c0392b;
         }
         
-        .close-btn:active {
+        .return-btn {
+            background-color: #3498db;
+        }
+        
+        .return-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn:active {
             transform: scale(0.98);
+        }
+        
+        .button-container {
+            display: flex;
+            gap: 15px;
         }
         
         .message {
@@ -55,9 +72,34 @@
 </head>
 <body>
     <div class="message" id="message">已复制到剪贴板！</div>
-    <button class="close-btn" onclick="closeWindow()">关闭页面</button>
+    <div class="button-container">
+        <button class="btn return-btn" onclick="returnData()">返回数据</button>
+        <button class="btn close-btn" onclick="closeWindow()">关闭页面</button>
+    </div>
     
     <script>
+        // 格式化时间为 yyyy-MM-dd HH:mm:ss
+        function formatDateTime(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const seconds = String(date.getSeconds()).padStart(2, '0');
+            
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        }
+        
+        // 监听页面关闭事件
+        window.addEventListener('beforeunload', async (event) => {
+            const closeTime = formatDateTime(new Date());
+            try {
+                await navigator.clipboard.writeText(closeTime);
+            } catch (err) {
+                console.error('写入关闭时间失败:', err);
+            }
+        });
+        
         async function closeWindow() {
             try {
                 // 复制 "hello world" 到剪贴板
